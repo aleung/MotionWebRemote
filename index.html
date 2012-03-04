@@ -1,0 +1,46 @@
+$def with (status, show_snapshot)
+<html>
+<style type="text/css">
+body {background-color:#e9eaee}
+.box {background-color:white; font:30px sans-serif; margin:5pt; padding:10pt; text-align:center;}
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   padding: 6px 6px;
+   border-radius: 8px;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font: 30px Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+</style>
+<head>
+<title>Camera Control</title>
+<meta name="viewport" content="width=device-width, height=device-height" />
+</head>
+<body>
+$if show_snapshot == True:
+    <div class="box">
+    <img src="/lastsnap.jpg"/>
+    </div>
+<div class="box">
+<a href="snapshot" class="button">Snapshot</a>
+</div>
+<div class="box">
+$status
+</div>
+$if status == 'ACTIVE':
+    <div class="box">Disable for<br/>
+    <a href="disable?hours=1" class="button">1 hour</a>
+    <a href="disable?hours=3" class="button">3 hours</a>
+    <a href="disable?hours=8" class="button">8 hours</a>
+    </div>
+$else:
+    <div class="box">
+    <a href="enable" class="button">Enable</a>
+    </div>
+</body>
+</html>
